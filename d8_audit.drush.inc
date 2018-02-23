@@ -80,7 +80,7 @@ function drush_d8_audit() {
     ['Total', $total],
   ];
 
-//  var_dump($ready);
+  drush_print("Drupal 8 Readiness Audit ");
   drush_print_table(['Ready', 'Name', 'Package', 'Latest Version', 'Extra']);
   drush_print(str_pad('', 100, "-"));
   drush_print_table($ready, FALSE);
