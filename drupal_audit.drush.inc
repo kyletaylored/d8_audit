@@ -3,10 +3,10 @@
 /**
  * Implementation of hook_drush_command().
  */
-function d8_audit_drush_command() {
-  $items['d8_audit'] = array(
+function drupal_audit_drush_command() {
+  $items['drupal_audit'] = array(
     'description' => 'Show a report on modules ready for D8.',
-    'aliases' => array('d8a'),
+    'aliases' => array('da'),
     'arguments' => array(
       'module' => '(Optional) Show only the output from this module.',
     ),
@@ -17,7 +17,7 @@ function d8_audit_drush_command() {
 /**
  * Drush command callback for Cache Audit.
  */
-function drush_d8_audit() {
+function drush_drupal_audit() {
   $results = array();
 
   $cmd_options = [
@@ -46,7 +46,7 @@ function drush_d8_audit() {
     ];
 
     $url = "https://updates.drupal.org/release-history/" . $module . "/8.x";
-    $xmlstr = _d8_audit_get_xml_from_url($url);
+    $xmlstr = _drupal_audit_get_xml_from_url($url);
     $xmlobj = new SimpleXMLElement($xmlstr);
     // For ease.
     $json = json_encode($xmlobj);
@@ -96,7 +96,7 @@ function drush_d8_audit() {
  *
  * @return mixed
  */
-function _d8_audit_get_xml_from_url($url){
+function _drupal_audit_get_xml_from_url($url){
   $ch = curl_init();
 
   curl_setopt($ch, CURLOPT_URL, $url);
