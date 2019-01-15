@@ -3,6 +3,10 @@ D8 Audit
 
 This Drush plugin provides a Drush command to quickly run a module audit for a D8 migration. Currently, the script will fetch a list of all enabled plugins, run them against the 8.x project API, and check if an 8.x version of the module is available.
 
+```bash
+$ drush da
+```
+
 Here is an example output.
 
 ```
