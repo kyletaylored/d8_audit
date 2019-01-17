@@ -18,7 +18,6 @@ function drupal_audit_drush_command() {
  * Drush command callback for Cache Audit.
  */
 function drush_drupal_audit() {
-  $results = array();
 
   $cmd_options = [
     'type' => 'module',
@@ -74,10 +73,10 @@ function drush_drupal_audit() {
 
   // Prepare ready count array.
   $rc = [
-    ['Ready Status', 'Count'],
-    ['Yes', $yes],
-    ['No', $no],
-    ['Total', $total],
+    ['Ready Status', 'Count', 'Percentage'],
+    ['Yes', $yes, number_format( ($yes/$total)* 100, 2 ) . '%'],
+    ['No', $no, number_format( ($no/$total)* 100, 2 ) . '%'],
+    ['Total', $total, '100%'],
   ];
 
   drush_print("Drupal 8 Readiness Audit ");
